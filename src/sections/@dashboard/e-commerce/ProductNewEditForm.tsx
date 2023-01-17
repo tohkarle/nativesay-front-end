@@ -1,3 +1,4 @@
+import Iconify from 'src/components/iconify/Iconify';
 import * as Yup from 'yup';
 import { useCallback, useEffect, useMemo } from 'react';
 // next
@@ -164,7 +165,8 @@ export default function ProductNewEditForm({ isEdit, currentProduct }: Props) {
   return (
     <FormProvider methods={methods} onSubmit={handleSubmit(onSubmit)}>
       <Grid container spacing={3}>
-        <Grid item xs={12} md={8}>
+
+        {/* <Grid item xs={12} md={8}>
           <Card sx={{ p: 3 }}>
             <Stack spacing={3}>
               <RHFTextField name="name" label="Product Name" />
@@ -195,9 +197,8 @@ export default function ProductNewEditForm({ isEdit, currentProduct }: Props) {
               </Stack>
             </Stack>
           </Card>
-        </Grid>
-
-        <Grid item xs={12} md={4}>
+        </Grid> */}
+        {/* <Grid item xs={12} md={4}>
           <Stack spacing={3}>
             <Card sx={{ p: 3 }}>
               <RHFSwitch name="inStock" label="In stock" />
@@ -287,7 +288,31 @@ export default function ProductNewEditForm({ isEdit, currentProduct }: Props) {
               {!isEdit ? 'Create Product' : 'Save Changes'}
             </LoadingButton>
           </Stack>
+        </Grid> */}
+
+        <Grid item xs={12} md={6}>
+          <Card sx={{ p: 3 }}>
+            <Stack spacing={3}>
+              <RHFEditor simple name="input" />
+              <Iconify icon="ic:baseline-mic-none" width={27} />
+              <Iconify icon="akar-icons:sound-on" width={27} />
+              <Iconify icon="akar-icons:sound-on" width={27} />
+              <LoadingButton type="submit" variant="contained" size="large" loading={isSubmitting}>
+                Translate
+              </LoadingButton>
+
+            </Stack>
+          </Card>
         </Grid>
+
+        <Grid item xs={12} md={6}>
+          <Stack spacing={3}>
+            <Card sx={{ p: 3 }}>
+              <RHFEditor simple name="output" />
+            </Card>
+          </Stack>
+        </Grid>
+
       </Grid>
     </FormProvider>
   );

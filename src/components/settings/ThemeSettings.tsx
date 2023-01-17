@@ -15,7 +15,7 @@ export default function ThemeSettings({ children }: Props) {
       <ThemeContrast>
         <ThemeRtlLayout>
           {children}
-          <SettingsDrawer />
+          {/* <SettingsDrawer /> */}
         </ThemeRtlLayout>
       </ThemeContrast>
     </ThemeColorPresets>
