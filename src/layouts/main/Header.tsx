@@ -51,7 +51,7 @@ export default function Header() {
         <Container sx={{ height: 1, display: 'flex', alignItems: 'center' }}>
           <Logo />
 
-          <Link
+          {/* <Link
             href={PATH_DOCS.changelog}
             target="_blank"
             rel="noopener"
@@ -59,7 +59,7 @@ export default function Header() {
             sx={{ ml: 1 }}
           >
             <Label color="info"> v4.1.0 </Label>
-          </Link>
+          </Link> */}
 
           <Box sx={{ flexGrow: 1 }} />
 
