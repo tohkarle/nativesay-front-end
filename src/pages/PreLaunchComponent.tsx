@@ -5,7 +5,6 @@ import { Button, Box, Card, Container, Typography, Stack } from '@mui/material';
 // components
 import Image from '../components/image';
 import { MotionViewport, varFade } from '../components/animate';
-import Iconify from 'src/components/iconify/Iconify';
 
 // ----------------------------------------------------------------------
 
@@ -50,7 +49,7 @@ interface Props {
   handleClick: () => void;
 }
 
-export default function PreLaunchComponent(props: Props) {
+export default function PreLaunchComponent({handleClick}: Props) {
   return (
     <StyledRoot>
       <Container component={MotionViewport}>
@@ -117,7 +116,7 @@ export default function PreLaunchComponent(props: Props) {
             And many more features to come...
           </Typography>
           <Button
-            onClick={props.handleClick}
+            onClick={handleClick}
             variant="contained"
             size="large"
             sx={{ width: '200px' }}

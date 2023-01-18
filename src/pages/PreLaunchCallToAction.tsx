@@ -17,7 +17,7 @@ interface Props {
   handleClick: () => void;
 }
 
-export default function PreLaunchCallToAction(props: Props) {
+export default function PreLaunchCallToAction({handleClick}: Props) {
   const theme = useTheme();
 
   return (
@@ -41,7 +41,7 @@ export default function PreLaunchCallToAction(props: Props) {
         }}
       >
         <Content />
-        <Description handleClick={props.handleClick}/>
+        <Description handleClick={handleClick}/>
       </Stack>
     </Container>
   );
@@ -49,7 +49,7 @@ export default function PreLaunchCallToAction(props: Props) {
 
 // ----------------------------------------------------------------------
 
-function Description(props: Props) {
+function Description({handleClick}: Props) {
   return (
     <Box
       sx={{
@@ -84,7 +84,7 @@ function Description(props: Props) {
           // width: { xs:300, md: 390 }
         }}
       >
-        Don't miss out on this opportunity to experience
+        Don&apos;t miss out on this opportunity to experience
         the power of effective language learning and
         communication with NativeSay.
       </Box>
@@ -96,7 +96,7 @@ function Description(props: Props) {
       >
         <m.div variants={varFade().inRight}>
           <Button
-            onClick={props.handleClick}
+            onClick={handleClick}
             color="inherit"
             size="large"
             variant="contained"

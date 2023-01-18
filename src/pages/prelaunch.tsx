@@ -5,11 +5,10 @@ import Head from 'next/head';
 // @mui
 import { styled, useTheme, alpha } from '@mui/material/styles';
 import { Container, Box, Stack, Button, Typography, IconButton, InputAdornment } from '@mui/material';
-// hooks
-import useCountdown from '../hooks/useCountdown';
 // layouts
 import PreLaunchLayout from 'src/pages/PreLaunchLayout';
-import MainLayout from '../layouts/main';
+// hooks
+import useCountdown from '../hooks/useCountdown';
 // _mock
 import { _socials } from '../_mock/arrays';
 // utils
@@ -60,7 +59,7 @@ export default function PreLaunchPage() {
 
       <Stack spacing={4} sx={{ alignItems:'center', pt:6, px:[3,9,18] }}>
         <Typography variant="h2" paragraph textAlign="center">
-          The World's First True Contextual Translator
+          The World&apos;s First True Contextual Translator
         </Typography>
 
         <Typography textAlign="center" sx={{ color: 'text.secondary' }}>
