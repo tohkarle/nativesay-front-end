@@ -57,7 +57,14 @@ export default function PreLaunchPage() {
         <title> NativeSay | How a native would say it</title>
       </Head>
 
-      <Stack spacing={4} sx={{ alignItems:'center', pt:6, px:[3,9,18] }}>
+      <Stack
+        spacing={4}
+        sx={{
+          alignItems: 'center',
+          pt: { xs: 0, md: 3 },
+          px:[ 3,9,18]
+          }}
+        >
         <Typography variant="h2" paragraph textAlign="center">
           The World&apos;s First True Contextual Translator
         </Typography>

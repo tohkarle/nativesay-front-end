@@ -24,6 +24,7 @@ export default function PreLaunchLayout({ children }: Props) {
 
       <Container component="main">
         <Stack
+          spacing={9}
           sx={{
             py: 12,
             m: 'auto',
