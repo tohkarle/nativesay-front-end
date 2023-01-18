@@ -9,6 +9,7 @@ const withTM = require('next-transpile-modules')([
   '@fullcalendar/timeline',
 ]);
 
+
 module.exports = withTM({
   swcMinify: false,
   trailingSlash: true,
