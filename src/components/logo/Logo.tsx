@@ -89,7 +89,10 @@ const Logo = forwardRef<HTMLDivElement, LogoProps>(
     }
 
     return (
-      <Link component={NextLink} href="/" sx={{ display: 'contents' }}>
+      // <Link component={NextLink} href="/" sx={{ display: 'contents' }}>
+      //   {logo}
+      // </Link>
+      <Link component={NextLink} href="/prelaunch" sx={{ display: 'contents' }}>
         {logo}
       </Link>
     );

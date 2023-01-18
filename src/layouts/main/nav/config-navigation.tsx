@@ -1,3 +1,4 @@
+import { m, useScroll, useSpring } from 'framer-motion';
 // routes
 import { PATH_AUTH, PATH_DOCS, PATH_PAGE } from '../../../routes/paths';
 // config
