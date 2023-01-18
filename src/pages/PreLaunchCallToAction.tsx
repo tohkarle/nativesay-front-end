@@ -23,7 +23,7 @@ export default function PreLaunchCallToAction(props: Props) {
   return (
     <Container component={MotionViewport}>
       <Stack
-        spacing={6}
+        spacing={{ xs: 6, md: 9 }}
         alignItems="center"
         direction={{ xs: 'column', md: 'row' }}
         sx={{
@@ -33,9 +33,11 @@ export default function PreLaunchCallToAction(props: Props) {
             endColor: theme.palette.primary.dark,
           }),
           borderRadius: 2,
-          pb: { xs: 6, md: 9 },
-          pt: { xs: 6, md: 9 },
-          pl: { xs: 0, md: 9 },
+          py: { xs: 6, md: 9 },
+          px: { xs: 4, md: 9 },
+          // pb: { xs: 6, md: 9 },
+          // pt: { xs: 6, md: 9 },
+          // pl: { xs: 0, md: 9 },
         }}
       >
         <Content />
@@ -64,7 +66,8 @@ function Description(props: Props) {
           color: 'common.white',
           mb: 5,
           typography: 'h2',
-          width: { xs: 390, md: 540 }
+          maxWidth: { xs:300, md: 600 }
+          // width: { xs:300, md: 540 }
         }}
       >
         Communicate and learn with no boundaries
@@ -77,12 +80,12 @@ function Description(props: Props) {
           color: 'common.white',
           mb: 5,
           typography: 'body1',
+          maxWidth: { xs:300, md: 390 }
+          // width: { xs:300, md: 390 }
         }}
       >
         Don't miss out on this opportunity to experience
-        <br /> 
         the power of effective language learning and
-        <br /> 
         communication with NativeSay.
       </Box>
 
@@ -127,7 +130,7 @@ function Content() {
           disabledEffect
           alt="NativeSay Logo"
           src="/logo/logo_v2.png"
-          sx={{ maxWidth: 330 }}
+          sx={{ maxWidth: { xs: 240, md: 330} }}
         />
       </m.div>
     </Stack>
