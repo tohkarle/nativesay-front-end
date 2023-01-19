@@ -53,7 +53,7 @@ export default function PreLaunchPage() {
 
   const handleClick = () => {
     if (scrollToBottomRef.current)
-      scrollToBottomRef.current.scrollIntoView({ behavior: 'auto' });
+      scrollToBottomRef.current.scrollIntoView({ behavior: 'smooth' });
   };
 
   const seeAllFeatures = () => {
