@@ -145,63 +145,63 @@ export default function PreLaunchHero({handleClick, seeAllFeatures}: Props) {
 
 // ----------------------------------------------------------------------
 
-// function Description({handleClick, seeAllFeatures}: Props) {
-//   return (
-//     <StyledDescription>
-//       <m.div variants={varFade().in}>
-//         <Typography variant="h3" sx={{ textAlign: 'center' }}>
-//         Unlock the Power of <br />
-//         Contextual Translation
-//         </Typography>
-//       </m.div>
+function Description({handleClick, seeAllFeatures}: Props) {
+  return (
+    <StyledDescription>
+      <m.div variants={varFade().in}>
+        <Typography variant="h3" sx={{ textAlign: 'center' }}>
+        Unlock the Power of <br />
+        Contextual Translation
+        </Typography>
+      </m.div>
 
-//       <m.div variants={varFade().in}>
-//         <StyledGradientText
-//           animate={{ backgroundPosition: '200% center' }}
-//           transition={{
-//             repeatType: 'reverse',
-//             ease: 'linear',
-//             duration: 20,
-//             repeat: Infinity,
-//           }}
-//         >
-//           NativeSay
-//         </StyledGradientText>
-//       </m.div>
+      <m.div variants={varFade().in}>
+        <StyledGradientText
+          animate={{ backgroundPosition: '200% center' }}
+          transition={{
+            repeatType: 'reverse',
+            ease: 'linear',
+            duration: 20,
+            repeat: Infinity,
+          }}
+        >
+          NativeSay
+        </StyledGradientText>
+      </m.div>
 
-//       <m.div variants={varFade().in}>
-//         <Typography variant="body2" sx={{ textAlign: 'center' }}>
-//         Introducing NativeSay - the revolutionary translation app that takes into account the context and cultural nuances of your translations. Say goodbye to awkward or misinformed translations and hello to accurate, contextually aware communication.
-//         </Typography>
-//       </m.div>
+      <m.div variants={varFade().in}>
+        <Typography variant="body2" sx={{ textAlign: 'center' }}>
+        Introducing NativeSay - the revolutionary translation app that takes into account the context and cultural nuances of your translations. Say goodbye to awkward or misinformed translations and hello to accurate, contextually aware communication.
+        </Typography>
+      </m.div>
 
-//       <m.div variants={varFade().in}>
-//         <Stack spacing={1.5} direction={{ xs: 'column-reverse', sm: 'row' }} sx={{ my: 5 }}>
-//           <Stack alignItems="center" spacing={2}>
-//             <Button
-//               onClick={handleClick}
-//               size="large"
-//               variant="contained"
-//             >
-//               Join The Beta Test
-//             </Button>
+      <m.div variants={varFade().in}>
+        <Stack spacing={1.5} direction={{ xs: 'column-reverse', sm: 'row' }} sx={{ my: 5 }}>
+          <Stack alignItems="center" spacing={2}>
+            <Button
+              onClick={handleClick}
+              size="large"
+              variant="contained"
+            >
+              Join The Beta Test
+            </Button>
 
-//           </Stack>
+          </Stack>
 
-//           <Button
-//             onClick={seeAllFeatures}
-//             color="inherit"
-//             size="large"
-//             variant="outlined"
-//             sx={{ borderColor: 'text.primary' }}
-//           >
-//             See All Benefits
-//           </Button>
-//         </Stack>
-//       </m.div>
-//     </StyledDescription>
-//   );
-// }
+          <Button
+            onClick={seeAllFeatures}
+            color="inherit"
+            size="large"
+            variant="outlined"
+            sx={{ borderColor: 'text.primary' }}
+          >
+            See All Benefits
+          </Button>
+        </Stack>
+      </m.div>
+    </StyledDescription>
+  );
+}
 
 // ----------------------------------------------------------------------
 
