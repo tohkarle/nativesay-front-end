@@ -1,7 +1,7 @@
 import { m } from 'framer-motion';
 // @mui
 import { useTheme } from '@mui/material/styles';
-import { Button, Box, Container, Stack } from '@mui/material';
+import { Typography, Button, Box, Container, Stack } from '@mui/material';
 // utils
 import { bgGradient } from '../utils/cssStyles';
 // routes
@@ -10,6 +10,7 @@ import { PATH_FREE_VERSION, PATH_MINIMAL_ON_STORE } from '../routes/paths';
 import Iconify from '../components/iconify';
 import Image from '../components/image';
 import { MotionViewport, varFade } from '../components/animate';
+import PreLaunchEmailForm from './PreLaunchEmailForm';
 
 // ----------------------------------------------------------------------
 
@@ -23,6 +24,18 @@ export default function PreLaunchCallToAction({handleClick}: Props) {
   return (
     <Container component={MotionViewport}>
       <Stack
+        spacing={3}
+        sx={{
+          textAlign: 'center',
+          mt: { xs: 6, md: 6 },
+        }}
+      >
+        <Typography variant="h2">
+          Break through <br />
+          language barriers
+        </Typography>
+      </Stack>
+      <Stack
         spacing={{ xs: 6, md: 9 }}
         alignItems="center"
         direction={{ xs: 'column', md: 'row' }}
@@ -33,15 +46,14 @@ export default function PreLaunchCallToAction({handleClick}: Props) {
             endColor: theme.palette.primary.dark,
           }),
           borderRadius: 2,
+          mt: { xs: 6, md: 6 },
           py: { xs: 6, md: 9 },
-          px: { xs: 4, md: 9 },
-          // pb: { xs: 6, md: 9 },
-          // pt: { xs: 6, md: 9 },
-          // pl: { xs: 0, md: 9 },
+          px: { xs: 4, md: 15 },
         }}
       >
         <Content />
-        <Description handleClick={handleClick}/>
+        {/* <Description handleClick={handleClick}/> */}
+        <PreLaunchEmailForm />
       </Stack>
     </Container>
   );
@@ -70,7 +82,8 @@ function Description({handleClick}: Props) {
           // width: { xs:300, md: 540 }
         }}
       >
-        Communicate and learn with no boundaries
+        Break through <br />
+        language barriers
       </Box>
 
       <Box
@@ -84,9 +97,7 @@ function Description({handleClick}: Props) {
           // width: { xs:300, md: 390 }
         }}
       >
-        Don&apos;t miss out on this opportunity to experience
-        the power of effective language learning and
-        communication with NativeSay.
+        Unlock the potential of effective language learning and seamless communication with NativeSay. Don&apos;t miss your chance to be among the first to access this revolutionary app.
       </Box>
 
       <Stack
@@ -105,7 +116,7 @@ function Description({handleClick}: Props) {
               bgcolor: 'common.white',
             }}
           >
-            Sign Up For Beta
+            Join The Beta Test
           </Button>
         </m.div>
 
@@ -130,7 +141,7 @@ function Content() {
           disabledEffect
           alt="NativeSay Logo"
           src="/logo/logo_v2.png"
-          sx={{ maxWidth: { xs: 240, md: 330} }}
+          sx={{ maxWidth: { xs: 240, md: 390} }}
         />
       </m.div>
     </Stack>

@@ -1,7 +1,8 @@
 // next
 import dynamic from 'next/dynamic';
+import { useRouter } from 'next/router';
 // @mui
-import { Stack, Container } from '@mui/material';
+import { Box } from '@mui/material';
 // hooks
 import useOffSetTop from '../hooks/useOffSetTop';
 // config
@@ -15,27 +16,22 @@ type Props = {
   children?: React.ReactNode;
 };
 
-export default function PreLaunchLayout({ children }: Props) {
+export default function MainLayout({ children }: Props) {
+  const { pathname } = useRouter();
   const isOffset = useOffSetTop(HEADER.H_MAIN_DESKTOP);
 
   return (
-    <>
+    <Box sx={{ display: 'flex', flexDirection: 'column', height: 1 }}>
       <Header isOffset={isOffset} />
 
-      <Container component="main">
-        <Stack
-          spacing={9}
-          sx={{
-            py: 12,
-            m: 'auto',
-            minHeight: '100vh',
-            textAlign: 'center',
-            justifyContent: 'center',
-          }}
-        >
-          {children}
-        </Stack>
-      </Container>
-    </>
+      <Box
+        component="main"
+        sx={{
+          flexGrow: 1,
+        }}
+      >
+        {children}
+      </Box>
+    </Box>
   );
 }
