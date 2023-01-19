@@ -237,7 +237,7 @@ function Content() {
           component={m.img}
           animate={{ y: ['0%', '-100%'] }}
           transition={transition}
-          alt="hero_${isLight ? 'light' : 'dark'}_2"
+          alt={`hero_${isLight ? 'light' : 'dark'}_2`}
           src="/assets/images/home/nativesay_hero.png"
           sx={{ position: 'absolute' }}
         />
