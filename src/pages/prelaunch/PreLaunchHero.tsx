@@ -13,6 +13,7 @@ import { HEADER } from '../../config-global';
 import { secondaryFont } from '../../theme/typography';
 // components
 import { MotionContainer, varFade } from '../../components/animate';
+import Iconify from 'src/components/iconify/Iconify';
 
 // ----------------------------------------------------------------------
 
@@ -180,6 +181,7 @@ function Description({handleClick, seeAllFeatures}: Props) {
               onClick={handleClick}
               size="large"
               variant="contained"
+              startIcon={<Iconify icon="eva:flash-fill" width={24} />}
             >
               Join Beta Test
             </Button>
@@ -191,6 +193,7 @@ function Description({handleClick, seeAllFeatures}: Props) {
             color="inherit"
             size="large"
             variant="outlined"
+            startIcon={<Iconify icon="eva:external-link-fill" width={24} />}
             sx={{ borderColor: 'text.primary' }}
           >
             See Benefits

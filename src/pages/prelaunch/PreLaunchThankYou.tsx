@@ -54,7 +54,8 @@ export default function PreLaunchThankYou(open: any) {
         </Stack>
 
         <Typography>
-          Your participation in the beta test will help us improve and make NativeSay the best it can be. We look forward to your involvement and can&apos;t wait for you to see all the great features we have in store.
+          The beta test for NativeSay is set to officially launch on January 29th, 2023
+          We look forward to your involvement and can&apos;t wait for you to see all the great features we have in store.
           <br />
           <br />
           If you have any question, send us an email at <strong>support@nativesay.com</strong> and we will reply within 24 hours.
