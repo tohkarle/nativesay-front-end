@@ -44,13 +44,9 @@ export default function Header({ isOffset }: Props) {
       >
         <Logo />
 
-        <Link href="mailto:support@nativesay.com" variant="subtitle2" color="inherit">
-          support@nativesay.com
-        </Link>
-
-        {/* <Link component={NextLink} href={PATH_PAGE.faqs} variant="subtitle2" color="inherit">
+        <Link component={NextLink} href={PATH_PAGE.faqs} variant="subtitle2" color="inherit">
           Need Help?
-        </Link> */}
+        </Link>
       </Toolbar>
 
       {isOffset && <Shadow />}

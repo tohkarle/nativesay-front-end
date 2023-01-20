@@ -1,35 +1,29 @@
 import { m, useScroll, useSpring } from 'framer-motion';
+import React, { useRef } from 'react';
 // next
 import Head from 'next/head';
 // @mui
 import { useTheme } from '@mui/material/styles';
-import { Box } from '@mui/material';
+import { Box, Stack } from '@mui/material';
 // layouts
 import MainLayout from '../layouts/main';
 // sections
-import {
-  HomeHero,
-  HomeMinimal,
-  HomeDarkMode,
-  HomeLookingFor,
-  HomeForDesigner,
-  HomeColorPresets,
-  HomePricingPlans,
-  HomeAdvertisement,
-  HomeCleanInterfaces,
-  HomeHugePackElements,
-} from '../sections/home';
+import PreLaunchCallToAction from './prelaunch/PreLaunchCallToAction';
+import PreLaunchHero from './prelaunch/PreLaunchHero';
+import PreLaunchBenefits from './prelaunch/PreLaunchBenefits';
 
 // ----------------------------------------------------------------------
 
-HomePage.getLayout = (page: React.ReactElement) => <MainLayout> {page} </MainLayout>;
+PreLaunchPage.getLayout = (page: React.ReactElement) => <MainLayout> {page} </MainLayout>;
 
 // ----------------------------------------------------------------------
 
-export default function HomePage() {
+export default function PreLaunchPage() {
   const theme = useTheme();
-
   const { scrollYProgress } = useScroll();
+  const scrollToBottomRef = useRef<HTMLInputElement>(null);
+  const seeAllFeaturesRef = useRef<HTMLInputElement>(null);
+  // const { days, hours, minutes, seconds } = useCountdown(new Date('01/22/2023 21:30'));
 
   const scaleX = useSpring(scrollYProgress, {
     stiffness: 100,
@@ -53,15 +47,25 @@ export default function HomePage() {
     />
   );
 
+  const handleClick = () => {
+    if (scrollToBottomRef.current)
+      scrollToBottomRef.current.scrollIntoView({ behavior: 'smooth' });
+  };
+
+  const seeAllFeatures = () => {
+    if (seeAllFeaturesRef.current)
+      seeAllFeaturesRef.current.scrollIntoView({ behavior: 'smooth' });
+  }
+
   return (
     <>
       <Head>
-        <title> The starting point for your next project | Minimal UI</title>
+        <title> NativeSay | How a native would say it</title>
       </Head>
 
       {progress}
 
-      <HomeHero />
+      <PreLaunchHero handleClick={handleClick} seeAllFeatures={seeAllFeatures} />
 
       <Box
         sx={{
@@ -70,23 +74,15 @@ export default function HomePage() {
           bgcolor: 'background.default',
         }}
       >
-        <HomeMinimal />
+      
+      <Stack ref={seeAllFeaturesRef} >
+        <PreLaunchBenefits handleClick={handleClick} />
+      </Stack>
 
-        <HomeHugePackElements />
+      <Stack ref={scrollToBottomRef} >
+        <PreLaunchCallToAction handleClick={handleClick} />
+      </Stack>
 
-        <HomeForDesigner />
-
-        <HomeDarkMode />
-
-        <HomeColorPresets />
-
-        <HomeCleanInterfaces />
-
-        <HomePricingPlans />
-
-        <HomeLookingFor />
-
-        <HomeAdvertisement />
       </Box>
     </>
   );

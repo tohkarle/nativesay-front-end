@@ -1,15 +1,13 @@
 import { m } from 'framer-motion';
 // @mui
+import { Box, Button, Container, Stack, Typography } from '@mui/material';
 import { useTheme } from '@mui/material/styles';
-import { Typography, Button, Box, Container, Stack } from '@mui/material';
 // utils
-import { bgGradient } from '../utils/cssStyles';
+import { bgGradient } from '../../utils/cssStyles';
 // routes
-import { PATH_FREE_VERSION, PATH_MINIMAL_ON_STORE } from '../routes/paths';
 // components
-import Iconify from '../components/iconify';
-import Image from '../components/image';
-import { MotionViewport, varFade } from '../components/animate';
+import { MotionViewport, varFade } from '../../components/animate';
+import Image from '../../components/image';
 import PreLaunchEmailForm from './PreLaunchEmailForm';
 
 // ----------------------------------------------------------------------
@@ -116,7 +114,7 @@ function Description({handleClick}: Props) {
               bgcolor: 'common.white',
             }}
           >
-            Join The Beta Test
+            Join Beta Test
           </Button>
         </m.div>
 

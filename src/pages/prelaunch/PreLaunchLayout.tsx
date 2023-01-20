@@ -4,11 +4,11 @@ import { useRouter } from 'next/router';
 // @mui
 import { Box } from '@mui/material';
 // hooks
-import useOffSetTop from '../hooks/useOffSetTop';
+import useOffSetTop from '../../hooks/useOffSetTop';
 // config
-import { HEADER } from '../config-global';
+import { HEADER } from '../../config-global';
 //
-const Header = dynamic(() => import('../layouts/compact/Header'), { ssr: false });
+const Header = dynamic(() => import('../../layouts/compact/Header'), { ssr: false });
 
 // ----------------------------------------------------------------------
 

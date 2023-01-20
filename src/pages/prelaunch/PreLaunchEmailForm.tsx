@@ -8,9 +8,9 @@ import { yupResolver } from '@hookform/resolvers/yup';
 // @mui
 import { Box, Stack, IconButton, InputAdornment, Alert, Typography } from '@mui/material';
 import { LoadingButton } from '@mui/lab';
-import FormProvider, { RHFTextField } from '../components/hook-form';
+import FormProvider, { RHFTextField } from '../../components/hook-form';
 import PreLaunchThankYou from './PreLaunchThankYou';
-import { MotionViewport, varFade } from '../components/animate';
+import { MotionViewport, varFade } from '../../components/animate';
 
 // ----------------------------------------------------------------------
 
@@ -118,8 +118,18 @@ export default function PreLaunchEmailForm() {
           direction={{ xs: 'column', sm: 'row' }}
           spacing={2}
         >
-          <RHFTextField inputRef={firstNameRef} name="firstName" label="First name" sx={{ color: 'primary.main' }} />
-          <RHFTextField inputRef={lastNameRef} name="lastName" label="Last name" />
+          <RHFTextField
+            inputRef={firstNameRef}
+            name="firstName"
+            label="First name"
+            inputProps={{ style: { color: 'white' } }}
+          />
+          <RHFTextField
+            inputRef={lastNameRef}
+            name="lastName"
+            label="Last name"
+            inputProps={{ style: { outlineColor:'blue', color: 'white' } }}
+          />
         </Stack>
 
         <Stack
@@ -146,7 +156,7 @@ export default function PreLaunchEmailForm() {
               bgcolor: 'common.white',
             }}
           >
-            Join The Beta Test
+            Join Beta Test
           </LoadingButton>
         </Stack>
       </Stack>

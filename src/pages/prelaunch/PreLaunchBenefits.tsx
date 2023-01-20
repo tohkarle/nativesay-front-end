@@ -3,11 +3,11 @@ import { m } from 'framer-motion';
 import { styled } from '@mui/material/styles';
 import { Box, Button, Container, Typography, Grid, Stack } from '@mui/material';
 // hooks
-import useResponsive from '../hooks/useResponsive';
+import useResponsive from '../../hooks/useResponsive';
 // components
-import Image from '../components/image';
-import Iconify from '../components/iconify';
-import { MotionViewport, varFade } from '../components/animate';
+import Image from '../../components/image';
+import Iconify from '../../components/iconify';
+import { MotionViewport, varFade } from '../../components/animate';
 
 // ----------------------------------------------------------------------
 
@@ -280,7 +280,7 @@ function JoinTheBetaTestButton({handleClick}: Props) {
       variant="contained"
       endIcon={<Iconify icon="ic:round-arrow-right-alt" />}
     >
-      Join The Beta Test
+      Join Beta Test
     </Button>
   );
 }

@@ -3,9 +3,9 @@ import { useRouter } from 'next/router';
 // @mui
 import { Box, Link, Button, Divider, Typography, Stack, DialogProps } from '@mui/material';
 // components
-import Image from '../components/image';
-import Iconify from '../components/iconify';
-import { DialogAnimate } from '../components/animate';
+import Image from '../../components/image';
+import Iconify from '../../components/iconify';
+import { DialogAnimate } from '../../components/animate';
 
 // ----------------------------------------------------------------------
 
@@ -40,10 +40,10 @@ export default function PreLaunchThankYou(open: any) {
           m: 'auto',
           maxWidth: 480,
           textAlign: 'center',
-          px: { xs: 2, sm: 0 },
+          px: { xs: 4, sm: 0 },
         }}
       >
-        <Typography variant="h4">Thank you for signing up for our beta test!</Typography>
+        <Typography variant="h4">Thank you for signing up!</Typography>
 
         <Stack alignItems="center" >
           <Image
@@ -58,8 +58,6 @@ export default function PreLaunchThankYou(open: any) {
           <br />
           <br />
           If you have any question, send us an email at <strong>support@nativesay.com</strong> and we will reply within 24 hours.
-          <br /> <br />
-          All the best!
         </Typography>
 
         <Stack

@@ -3,18 +3,16 @@ import { useEffect, useState } from 'react';
 // @mui
 import { styled, alpha, useTheme } from '@mui/material/styles';
 import { Button, Box, Link, Container, Typography, Stack, Grid } from '@mui/material';
-// routes
-import { PATH_DASHBOARD, PATH_FIGMA_PREVIEW, PATH_FREE_VERSION } from '../routes/paths';
 // hooks
-import useResponsive from '../hooks/useResponsive';
+import useResponsive from '../../hooks/useResponsive';
 // utils
-import { textGradient, bgGradient } from '../utils/cssStyles';
+import { textGradient, bgGradient } from '../../utils/cssStyles';
 // config
-import { HEADER } from '../config-global';
+import { HEADER } from '../../config-global';
 // theme
-import { secondaryFont } from '../theme/typography';
+import { secondaryFont } from '../../theme/typography';
 // components
-import { MotionContainer, varFade } from '../components/animate';
+import { MotionContainer, varFade } from '../../components/animate';
 
 // ----------------------------------------------------------------------
 
@@ -46,7 +44,7 @@ const StyledDescription = styled('div')(({ theme }) => ({
 
 const StyledGradientText = styled(m.h1)(({ theme }) => ({
   ...textGradient(
-    `300deg, ${theme.palette.primary.main} 0%, ${theme.palette.warning.main} 25%, ${theme.palette.primary.main} 50%, ${theme.palette.warning.main} 75%, ${theme.palette.primary.main} 100%`
+    `300deg, ${theme.palette.primary.dark} 0%, ${theme.palette.primary.main} 25%, ${theme.palette.primary.dark} 50%, ${theme.palette.primary.main} 75%, ${theme.palette.primary.dark} 100%`
   ),
   backgroundSize: '400%',
   fontFamily: secondaryFont.style.fontFamily,
@@ -149,7 +147,7 @@ function Description({handleClick, seeAllFeatures}: Props) {
   return (
     <StyledDescription>
       <m.div variants={varFade().in}>
-        <Typography variant="h3" sx={{ textAlign: 'center' }}>
+        <Typography variant="h2" sx={{ textAlign: 'center' }}>
         Unlock the Power of <br />
         Contextual Translation
         </Typography>
@@ -183,7 +181,7 @@ function Description({handleClick, seeAllFeatures}: Props) {
               size="large"
               variant="contained"
             >
-              Join The Beta Test
+              Join Beta Test
             </Button>
 
           </Stack>
@@ -195,7 +193,7 @@ function Description({handleClick, seeAllFeatures}: Props) {
             variant="outlined"
             sx={{ borderColor: 'text.primary' }}
           >
-            See All Benefits
+            See Benefits
           </Button>
         </Stack>
       </m.div>

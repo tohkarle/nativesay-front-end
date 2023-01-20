@@ -28,8 +28,8 @@ const Logo = forwardRef<HTMLDivElement, LogoProps>(
         component="img"
         src="/logo/logo_black_v2.png"
         sx={{
-          width: 150,
-          height: 25,
+          width: { xs: 138, md: 150 },
+          height: { xs: 23, md: 25 },
           cursor: 'pointer',
           ...sx,
         }}

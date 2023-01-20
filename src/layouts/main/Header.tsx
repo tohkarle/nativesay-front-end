@@ -63,13 +63,17 @@ export default function Header() {
 
           <Box sx={{ flexGrow: 1 }} />
 
-          {isDesktop && <NavDesktop isOffset={isOffset} data={navConfig} />}
+          <Link href="mailto:support@nativesay.com" variant="subtitle2" color="inherit">
+            support@nativesay.com
+          </Link>
 
-          {/* <Button variant="contained" target="_blank" rel="noopener" href={PATH_MINIMAL_ON_STORE}>
+          {/* {isDesktop && <NavDesktop isOffset={isOffset} data={navConfig} />}
+
+          <Button variant="contained" target="_blank" rel="noopener" href={PATH_MINIMAL_ON_STORE}>
             Purchase Now
-          </Button> */}
+          </Button>
 
-          {!isDesktop && <NavMobile isOffset={isOffset} data={navConfig} />}
+          {!isDesktop && <NavMobile isOffset={isOffset} data={navConfig} />} */}
         </Container>
       </Toolbar>
 
