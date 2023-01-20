@@ -60,7 +60,7 @@ export default function PreLaunchBenefits({handleClick}: Props) {
 
           {!isDesktop && (
             <Grid item xs={12} sx={{ textAlign: 'center' }}>
-              <JoinTheBetaTestButton handleClick={handleClick} />
+              <JoinBetaTestButton handleClick={handleClick} />
             </Grid>
           )}
         </Grid>
@@ -83,7 +83,7 @@ export default function PreLaunchBenefits({handleClick}: Props) {
 
           {!isDesktop && (
             <Grid item xs={12} sx={{ textAlign: 'center' }}>
-              <JoinTheBetaTestButton handleClick={handleClick} />
+              <JoinBetaTestButton handleClick={handleClick} />
             </Grid>
           )}
         </Grid>
@@ -104,7 +104,7 @@ export default function PreLaunchBenefits({handleClick}: Props) {
 
           {!isDesktop && (
             <Grid item xs={12} sx={{ textAlign: 'center' }}>
-              <JoinTheBetaTestButton handleClick={handleClick} />
+              <JoinBetaTestButton handleClick={handleClick} />
             </Grid>
           )}
         </Grid>
@@ -150,7 +150,7 @@ function Description1({handleClick}: Props) {
         </Typography>
       </m.div>
 
-      {isDesktop && <m.div variants={varFade().inDown}> <JoinTheBetaTestButton handleClick={handleClick} /> </m.div>}
+      {isDesktop && <m.div variants={varFade().inDown}> <JoinBetaTestButton handleClick={handleClick} /> </m.div>}
     </Stack>
   );
 }
@@ -190,7 +190,7 @@ function Description2({handleClick}: Props) {
         </Typography>
       </m.div>
 
-      {isDesktop && <m.div variants={varFade().inDown}> <JoinTheBetaTestButton handleClick={handleClick} /> </m.div>}
+      {isDesktop && <m.div variants={varFade().inDown}> <JoinBetaTestButton handleClick={handleClick} /> </m.div>}
     </Stack>
   );
 }
@@ -230,7 +230,7 @@ function Description3({handleClick}: Props) {
         </Typography>
       </m.div>
 
-      {isDesktop && <m.div variants={varFade().inDown}> <JoinTheBetaTestButton handleClick={handleClick} /> </m.div>}
+      {isDesktop && <m.div variants={varFade().inDown}> <JoinBetaTestButton handleClick={handleClick} /> </m.div>}
     </Stack>
   );
 }
@@ -272,7 +272,7 @@ function Benefit3() {
 
 // ----------------------------------------------------------------------
 
-function JoinTheBetaTestButton({handleClick}: Props) {
+function JoinBetaTestButton({handleClick}: Props) {
   return (
     <Button
       onClick={handleClick}
