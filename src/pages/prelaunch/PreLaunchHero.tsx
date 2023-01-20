@@ -1,5 +1,6 @@
 import { m, useScroll } from 'framer-motion';
 import { useEffect, useState } from 'react';
+import Iconify from 'src/components/iconify/Iconify';
 // @mui
 import { styled, alpha, useTheme } from '@mui/material/styles';
 import { Button, Box, Link, Container, Typography, Stack, Grid } from '@mui/material';
@@ -13,7 +14,6 @@ import { HEADER } from '../../config-global';
 import { secondaryFont } from '../../theme/typography';
 // components
 import { MotionContainer, varFade } from '../../components/animate';
-import Iconify from 'src/components/iconify/Iconify';
 
 // ----------------------------------------------------------------------
 
