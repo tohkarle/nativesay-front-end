@@ -68,8 +68,8 @@ export function OutputBox({
 
   return (
     <Grid item xs={12} md={6}>
-      <Card sx={{ p: 3 }}>
-        <Stack spacing={3}>
+      <Card sx={{ p: { xs: 2, md: 3 } }}>
+        <Stack spacing={{ xs: 2, md: 3 }}>
           <OutputBoxHeader
             targetLanguage={targetLanguage}
             onInputChange={handleTargetLanguage}

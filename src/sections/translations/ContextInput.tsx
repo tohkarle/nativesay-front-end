@@ -34,7 +34,7 @@ export function ContextInput({ customContexts, setCustomContexts }: Props) {
 
   return (
     <Grid item xs={12} md={12}>
-      <Card sx={{ mx: { xs: 0, md: 21 }, p: 1 }}>
+      <Card sx={{ mx: { xs: 0, md: 21 }, p: { xs: 0.5, md: 1 } }}>
         <Autocomplete
           multiple
           freeSolo

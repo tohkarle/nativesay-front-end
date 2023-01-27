@@ -29,7 +29,7 @@ export default function ContextTranslationPage() {
 
       <Box
         sx={{
-          px: { xs: 3, md: 12 },
+          px: { xs: 2, md: 12 },
           pt: 3,
           pb: 9,
         }}
