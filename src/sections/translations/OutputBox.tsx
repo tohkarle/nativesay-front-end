@@ -18,6 +18,7 @@ import {
 import { LANGUAGES } from "./utils";
 import { useEffect, useState } from "react";
 import React from "react";
+import { Block } from "../_examples/Block";
 
 type Props = {
   loading: boolean;
@@ -145,82 +146,83 @@ function OutputBoxContainer({ data }: OutputContainerBoxProps) {
   const { text, romanization, context, meaning } = data;
 
   return (
-    <Box
-      borderRadius="8px"
-      border="1px solid #D3D3D3"
-      height={{ xs: "210px", md: "360px" }}
-      overflow="auto"
-    >
-      <Stack spacing={3} sx={{ py: 3, px: 2 }}>
-        <Typography
-          sx={{
-            fontWeight: 450,
-            lineHeight: 1.5,
-            fontSize: 20,
-          }}
-        >
-          {text}
-        </Typography>
-        {romanization && (
-          <Stack direction="column" spacing={1}>
-            <Paper sx={{ display: "flex" }}>
-              <Typography
-                variant="subtitle2"
+    <Block sx={{ p: 0 }}>
+      <Box
+        borderRadius="8px"
+        height={{ xs: "210px", md: "360px" }}
+        overflow="auto"
+      >
+        <Stack spacing={3} sx={{ py: 3, px: 2 }}>
+          <Typography
+            sx={{
+              fontWeight: 450,
+              lineHeight: 1.5,
+              fontSize: 20,
+            }}
+          >
+            {text}
+          </Typography>
+          {romanization && (
+            <Stack direction="column" spacing={1}>
+              <Paper sx={{ display: "flex" }}>
+                <Typography
+                  variant="subtitle2"
+                  sx={{
+                    backgroundColor: "#F4F6F8",
+                    padding: 1,
+                    borderRadius: 1,
+                  }}
+                >
+                  Romanisation:
+                </Typography>
+              </Paper>
+              <Typography variant="body1">{romanization}</Typography>
+            </Stack>
+          )}
+          {context && (
+            <Stack direction="column" spacing={1}>
+              <Paper
                 sx={{
-                  backgroundColor: "#F4F6F8",
-                  padding: 1,
-                  borderRadius: 1,
+                  display: "flex",
                 }}
               >
-                Romanisation:
-              </Typography>
-            </Paper>
-            <Typography variant="body1">{romanization}</Typography>
-          </Stack>
-        )}
-        {context && (
-          <Stack direction="column" spacing={1}>
-            <Paper
-              sx={{
-                display: "flex",
-              }}
-            >
-              <Typography
-                variant="subtitle2"
+                <Typography
+                  variant="subtitle2"
+                  sx={{
+                    backgroundColor: "#F4F6F8",
+                    padding: 1,
+                    borderRadius: 1,
+                  }}
+                >
+                  Context explanation:
+                </Typography>
+              </Paper>
+              <Typography variant="body1">{context}</Typography>
+            </Stack>
+          )}
+          {meaning && (
+            <Stack direction="column" spacing={1}>
+              <Paper
                 sx={{
-                  backgroundColor: "#F4F6F8",
-                  padding: 1,
-                  borderRadius: 1,
+                  display: "flex",
                 }}
               >
-                Context explanation:
-              </Typography>
-            </Paper>
-            <Typography variant="body1">{context}</Typography>
-          </Stack>
-        )}
-        {meaning && (
-          <Stack direction="column" spacing={1}>
-            <Paper
-              sx={{
-                display: "flex",
-              }}
-            >
-              <Typography
-                variant="subtitle2"
-                sx={{
-                  backgroundColor: "#F4F6F8",
-                  padding: 1,
-                  borderRadius: 1,
-                }}
-              >
-                Meaning:
-              </Typography>
-            </Paper>
-            <Typography variant="body1">{meaning}</Typography>
-          </Stack>
-        )}
-      </Stack>
-    </Box>
+                <Typography
+                  variant="subtitle2"
+                  sx={{
+                    backgroundColor: "#F4F6F8",
+                    padding: 1,
+                    borderRadius: 1,
+                  }}
+                >
+                  Meaning:
+                </Typography>
+              </Paper>
+              <Typography variant="body1">{meaning}</Typography>
+            </Stack>
+          )}
+        </Stack>
+      </Box>
+    </Block>
   );
 }

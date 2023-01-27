@@ -6,8 +6,12 @@ import {
   styled,
   Stack,
   IconButton,
+  MenuItem,
+  Checkbox,
 } from "@mui/material";
+import { useState } from "react";
 import Iconify from "src/components/iconify";
+import MenuPopover from "src/components/menu-popover";
 import History from "src/utils/storage/History";
 
 const style = {
@@ -42,6 +46,13 @@ interface Props {
 }
 
 export default function HistoryDisplay({ history_arr, setHistory }: Props) {
+  const [openPopover, setOpenPopover] = useState<HTMLElement | null>(null);
+  const handleOpenPopover = (event: React.MouseEvent<HTMLElement>) => {
+    setOpenPopover(event.currentTarget);
+  };
+  const handleClosePopover = () => {
+    setOpenPopover(null);
+  };
   const handleDelete = () => {};
   const handleFavorite = () => {};
 
@@ -74,7 +85,9 @@ export default function HistoryDisplay({ history_arr, setHistory }: Props) {
                       variant="caption"
                       sx={{
                         backgroundColor: "#F4F6F8",
+                        color: "#212B36",
                         borderRadius: 1,
+                        px: 1,
                       }}
                     >
                       {history.from_lang}
@@ -84,7 +97,9 @@ export default function HistoryDisplay({ history_arr, setHistory }: Props) {
                       variant="caption"
                       sx={{
                         backgroundColor: "#F4F6F8",
+                        color: "#212B36",
                         borderRadius: 1,
+                        px: 1,
                       }}
                     >
                       {history.to_lang}
@@ -96,7 +111,7 @@ export default function HistoryDisplay({ history_arr, setHistory }: Props) {
                   </Typography>
                 </Box>
                 <Stack direction="row" alignItems="center" justifyContent="end">
-                  <IconButton aria-label="favorite">
+                  {/* <IconButton aria-label="favorite">
                     <Iconify
                       icon="eva:star-outline"
                       width={24}
@@ -109,8 +124,37 @@ export default function HistoryDisplay({ history_arr, setHistory }: Props) {
                       width={24}
                       onClick={handleDelete}
                     />
+                  </IconButton> */}
+                  <IconButton
+                    color={openPopover ? "inherit" : "default"}
+                    onClick={handleOpenPopover}
+                  >
+                    <Iconify icon="eva:more-vertical-fill" />
                   </IconButton>
                 </Stack>
+
+                <MenuPopover
+                  open={openPopover}
+                  onClose={handleClosePopover}
+                  arrow="right-top"
+                  sx={{ width: 160 }}
+                >
+                  <MenuItem onClick={handleFavorite}>
+                    <Checkbox
+                      color="warning"
+                      icon={<Iconify icon="eva:star-outline" />}
+                      checkedIcon={<Iconify icon="eva:star-fill" />}
+                      checked={false}
+                      onChange={handleFavorite}
+                      sx={{ p: 0 }}
+                    />
+                    Favourite
+                  </MenuItem>
+                  <MenuItem onClick={handleDelete} sx={{ color: "error.main" }}>
+                    <Iconify icon="eva:trash-2-outline" />
+                    Delete
+                  </MenuItem>
+                </MenuPopover>
               </Box>
             );
           })}

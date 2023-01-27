@@ -26,6 +26,7 @@ import {
   DialogActions,
   DialogContentText,
 } from "@mui/material";
+import { Block } from "../_examples/Block";
 
 // ----------------------------------------------------------------------
 
@@ -171,31 +172,29 @@ function InputBoxInputContainer({
   const rows = isDesktop ? 10 : 6;
 
   return (
-    <Box
-      borderRadius="8px"
-      border="1px solid #D3D3D3"
-      height={{ xs: "210px", md: "360px" }}
-    >
-      <TextField
-        onChange={onChange}
-        fullWidth
-        multiline
-        rows={rows}
-        placeholder="Type the text to translate"
-        InputProps={{
-          style: {
-            fontWeight: 450,
-            lineHeight: 1.5,
-            fontSize: 20,
-          },
-        }}
-        sx={{
-          "& .MuiOutlinedInput-root": {
-            "& > fieldset": { border: "none" },
-          },
-        }}
-      />
-    </Box>
+    <Block sx={{ p: 0 }}>
+      <Box borderRadius="8px" height={{ xs: "210px", md: "360px" }}>
+        <TextField
+          onChange={onChange}
+          fullWidth
+          multiline
+          rows={rows}
+          placeholder="Type the text to translate"
+          InputProps={{
+            style: {
+              fontWeight: 450,
+              lineHeight: 1.5,
+              fontSize: 20,
+            },
+          }}
+          sx={{
+            "& .MuiOutlinedInput-root": {
+              "& > fieldset": { border: "none" },
+            },
+          }}
+        />
+      </Box>
+    </Block>
   );
 }
 
