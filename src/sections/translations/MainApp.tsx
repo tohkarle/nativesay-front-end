@@ -1,20 +1,20 @@
-import { useState, useEffect } from 'react';
-import { styled } from '@mui/material/styles';
-import { translate } from 'src/services/translate';
-import { detectLanguages } from 'src/services/detectLanguage';
-import { useDebouncedCallback } from 'use-debounce';
-import History from 'src/utils/storage/History';
-import { Card, Grid } from '@mui/material';
-import { ITranslateRequest } from 'src/@types/translation';
-import { ContextInput } from './ContextInput';
-import { InputBox } from './InputBox';
-import { OutputBox } from './OutputBox';
-import { useRequest } from 'ahooks';
+import { useState, useEffect } from "react";
+import { styled } from "@mui/material/styles";
+import { translate } from "src/services/translate";
+import { detectLanguages } from "src/services/detectLanguage";
+import { useDebouncedCallback } from "use-debounce";
+import History from "src/utils/storage/History";
+import { Card, Grid } from "@mui/material";
+import { ITranslateRequest } from "src/@types/translation";
+import { ContextInput } from "./ContextInput";
+import { InputBox } from "./InputBox";
+import { OutputBox } from "./OutputBox";
+import { useRequest } from "ahooks";
 
 // ----------------------------------------------------------------------
 
 const Item = styled(Card)(({ theme }) => ({
-  backgroundColor: 'fff',
+  backgroundColor: "fff",
   ...theme.typography.body2,
   padding: theme.spacing(1),
   color: theme.palette.text.secondary,
@@ -22,36 +22,36 @@ const Item = styled(Card)(({ theme }) => ({
 }));
 
 const defaultTranslateRequest = {
-  text: '',
+  text: "",
   languages: [],
   contexts: [],
-  target_language: '',
+  target_language: "",
 };
 
 // TODO: move to util
 const defaultTranslateResponse = {
-  text: '',
-  language: '',
-  romanization: '',
-  context: '',
-  meaning: '',
-  pronunciation_url: '',
+  text: "",
+  language: "",
+  romanization: "",
+  context: "",
+  meaning: "",
+  pronunciation_url: "",
   pos: [],
 };
 
 const inputRootStyles = {
-  '.MuiOutlinedInput-root': {
+  ".MuiOutlinedInput-root": {
     // - The Input-root, inside the TextField-root
-    '& fieldset': {
+    "& fieldset": {
       // - The <fieldset> inside the Input-root
-      borderColor: 'white', // - Set the Input border
+      borderColor: "white", // - Set the Input border
     },
-    '&:hover fieldset': {
-      borderColor: 'white', // - Set the Input border when parent has :hover
+    "&:hover fieldset": {
+      borderColor: "white", // - Set the Input border when parent has :hover
     },
-    '&.Mui-focused fieldset': {
+    "&.Mui-focused fieldset": {
       // - Set the Input border when parent is focused
-      borderColor: 'white',
+      borderColor: "white",
     },
   },
 };
@@ -71,9 +71,9 @@ export default function MainApp() {
     manual: true,
   });
 
-  const handleTextChange: React.ChangeEventHandler<HTMLTextAreaElement | HTMLInputElement> = (
-    e
-  ) => {
+  const handleTextChange: React.ChangeEventHandler<
+    HTMLTextAreaElement | HTMLInputElement
+  > = (e) => {
     setTranslationRequest((previousState) => {
       return { ...previousState, text: e.target.value };
     });
@@ -94,7 +94,7 @@ export default function MainApp() {
     if (translateResponses) {
       for (const response of translateResponses ?? [defaultTranslateResponse]) {
         history?.addHistory({
-          from_lang: translationRequest.languages.join(','),
+          from_lang: translationRequest.languages.join(","),
           to_lang: translationRequest.target_language,
           from_text: translationRequest.text,
           to_text: response.text,
@@ -109,7 +109,10 @@ export default function MainApp() {
       return { ...previousState, languages: response };
     });
   };
-  const debouncedRunDetectLanguage = useDebouncedCallback(runDetectLanguage, 500);
+  const debouncedRunDetectLanguage = useDebouncedCallback(
+    runDetectLanguage,
+    500
+  );
 
   useEffect(() => {
     debouncedRunDetectLanguage();
@@ -132,7 +135,10 @@ export default function MainApp() {
 
   return (
     <Grid container spacing={3}>
-      <ContextInput customContexts={customContexts} setCustomContexts={setCustomContexts} />
+      <ContextInput
+        customContexts={customContexts}
+        setCustomContexts={setCustomContexts}
+      />
       <InputBox
         loading={loadingTranslateResponses}
         values={translationRequest.languages}

@@ -1,6 +1,14 @@
 // @mui
 import { useTheme } from '@mui/material/styles';
-import { Box, Button, AppBar, Toolbar, Container, Link, BoxProps } from '@mui/material';
+import {
+  Box,
+  Button,
+  AppBar,
+  Toolbar,
+  Container,
+  Link,
+  BoxProps,
+} from '@mui/material';
 // hooks
 import useOffSetTop from '../../hooks/useOffSetTop';
 import useResponsive from '../../hooks/useResponsive';
@@ -51,10 +59,6 @@ export default function Header() {
         <Container sx={{ height: 1, display: 'flex', alignItems: 'center' }}>
           <Logo />
 
-          <Label sx={{ ml: 1 }} color="info">
-            BETA
-          </Label>
-
           {/* <Link
             href={PATH_DOCS.changelog}
             target="_blank"
@@ -67,17 +71,18 @@ export default function Header() {
 
           <Box sx={{ flexGrow: 1 }} />
 
-          <Link href="mailto:support@nativesay.com" variant="subtitle2" color="inherit">
-            support@nativesay.com
-          </Link>
+          {isDesktop && <NavDesktop isOffset={isOffset} data={navConfig} />}
 
-          {/* {isDesktop && <NavDesktop isOffset={isOffset} data={navConfig} />}
-
-          <Button variant="contained" target="_blank" rel="noopener" href={PATH_MINIMAL_ON_STORE}>
+          {/* <Button
+            variant="contained"
+            target="_blank"
+            rel="noopener"
+            href={PATH_MINIMAL_ON_STORE}
+          >
             Purchase Now
-          </Button>
+          </Button> */}
 
-          {!isDesktop && <NavMobile isOffset={isOffset} data={navConfig} />} */}
+          {!isDesktop && <NavMobile isOffset={isOffset} data={navConfig} />}
         </Container>
       </Toolbar>
 

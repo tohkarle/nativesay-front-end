@@ -25,7 +25,7 @@ export default function CarouselBasic3({ data }: Props) {
   const carouselSettings = {
     dots: true,
     arrows: false,
-    autoplay: true,
+    autoplay: false,
     slidesToShow: 1,
     slidesToScroll: 1,
     rtl: Boolean(theme.direction === 'rtl'),

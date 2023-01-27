@@ -41,7 +41,7 @@ export default function EcommerceNewProducts({ list, ...other }: Props) {
     speed: 1000,
     dots: true,
     arrows: false,
-    autoplay: true,
+    autoplay: false,
     slidesToShow: 1,
     slidesToScroll: 1,
     rtl: Boolean(theme.direction === 'rtl'),

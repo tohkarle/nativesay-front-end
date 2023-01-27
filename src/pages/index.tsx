@@ -1,33 +1,35 @@
 import { m, useScroll, useSpring } from 'framer-motion';
-import React, { useRef } from 'react';
 // next
 import Head from 'next/head';
 // @mui
 import { useTheme } from '@mui/material/styles';
-import { Box, Stack } from '@mui/material';
+import { Box } from '@mui/material';
 // layouts
-import useScrollTo from 'src/hooks/useScrollTo';
 import MainLayout from '../layouts/main';
 // sections
-import PreLaunchCallToAction from '../sections/prelaunch/PreLaunchCallToAction';
-import PreLaunchHero from '../sections/prelaunch/PreLaunchHero';
-import PreLaunchBenefits from '../sections/prelaunch/PreLaunchBenefits';
+import {
+  HomeHero,
+  HomeMinimal,
+  HomeDarkMode,
+  HomeLookingFor,
+  HomeForDesigner,
+  HomeColorPresets,
+  HomePricingPlans,
+  HomeAdvertisement,
+  HomeCleanInterfaces,
+  HomeHugePackElements,
+} from '../sections/home';
 
 // ----------------------------------------------------------------------
 
-PreLaunchPage.getLayout = (page: React.ReactElement) => <MainLayout> {page} </MainLayout>;
+HomePage.getLayout = (page: React.ReactElement) => <MainLayout> {page} </MainLayout>;
 
 // ----------------------------------------------------------------------
 
-export default function PreLaunchPage() {
+export default function HomePage() {
   const theme = useTheme();
+
   const { scrollYProgress } = useScroll();
-
-  const scrollToBottomRef = useRef<HTMLInputElement>(null);
-  const seeBenefitsRef = useRef<HTMLInputElement>(null);
-
-  const scrollToBottom = useScrollTo(scrollToBottomRef);
-  const scrollToBenefits = useScrollTo(seeBenefitsRef);
 
   const scaleX = useSpring(scrollYProgress, {
     stiffness: 100,
@@ -51,23 +53,15 @@ export default function PreLaunchPage() {
     />
   );
 
-  const handleClick = () => {
-    scrollToBottom();
-  };
-
-  const handleClickSeeBenefits = () => {
-    scrollToBenefits();
-  };
-
   return (
     <>
       <Head>
-        <title> NativeSay | Speak like a local, anywhere you go</title>
+        <title> The starting point for your next project | Minimal UI</title>
       </Head>
 
       {progress}
 
-      <PreLaunchHero handleClick={handleClick} handleClickSeeBenefits={handleClickSeeBenefits} />
+      <HomeHero />
 
       <Box
         sx={{
@@ -76,13 +70,23 @@ export default function PreLaunchPage() {
           bgcolor: 'background.default',
         }}
       >
-        <Stack ref={seeBenefitsRef}>
-          <PreLaunchBenefits handleClick={handleClick} />
-        </Stack>
+        <HomeMinimal />
 
-        <Stack ref={scrollToBottomRef}>
-          <PreLaunchCallToAction />
-        </Stack>
+        <HomeHugePackElements />
+
+        <HomeForDesigner />
+
+        <HomeDarkMode />
+
+        <HomeColorPresets />
+
+        <HomeCleanInterfaces />
+
+        <HomePricingPlans />
+
+        <HomeLookingFor />
+
+        <HomeAdvertisement />
       </Box>
     </>
   );

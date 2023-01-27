@@ -34,13 +34,10 @@ export default class MyDocument extends Document {
           {/* Meta */}
           <meta
             name="description"
-            content="The revolutionary translation app that takes into account the context and cultural nuances of your translations. Say goodbye to awkward or misinformed translations and hello to accurate, contextually aware communication."
+            content="The starting point for your next project with Minimal UI Kit, built on the newest version of Material-UI ©, ready to be customized to your style"
           />
-          <meta
-            name="keywords"
-            content="contextual translation, translation app, language learning, accurate translations, cultural context, effective communication, in-built dictionary, multiple translations, context explanations, language learner tool"
-          />
-          <meta name="author" content="NativeSay" />
+          <meta name="keywords" content="react,material,kit,application,dashboard,admin,template" />
+          <meta name="author" content="Minimal UI Kit" />
         </Head>
 
         <body>

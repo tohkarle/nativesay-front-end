@@ -1,18 +1,20 @@
 // next
-import Head from 'next/head';
+import Head from "next/head";
 // @mui
-import { Box, Container } from '@mui/material';
+import { Box, Container } from "@mui/material";
 // redux
 // layouts
-import MainLayout from 'src/layouts/main/MainLayout';
+import MainLayout from "src/layouts/main/MainLayout";
 // components
-import { useSettingsContext } from '../components/settings';
+import { useSettingsContext } from "../components/settings";
 // sections
-import MainApp from 'src/sections/translations/MainApp';
+import MainApp from "src/sections/translations/MainApp";
 
 // ----------------------------------------------------------------------
 
-ContextTranslationPage.getLayout = (page: React.ReactElement) => <MainLayout>{page}</MainLayout>;
+ContextTranslationPage.getLayout = (page: React.ReactElement) => (
+  <MainLayout>{page}</MainLayout>
+);
 
 // ----------------------------------------------------------------------
 

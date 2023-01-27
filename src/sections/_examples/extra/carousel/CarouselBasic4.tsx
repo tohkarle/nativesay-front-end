@@ -45,7 +45,7 @@ export default function CarouselBasic4({ data }: Props) {
   const carouselSettings = {
     dots: false,
     arrows: false,
-    autoplay: true,
+    autoplay: false,
     slidesToShow: 1,
     slidesToScroll: 1,
     fade: Boolean(theme.direction !== 'rtl'),

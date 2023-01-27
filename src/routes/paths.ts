@@ -32,6 +32,7 @@ export const PATH_PAGE = {
   page404: '/404',
   page500: '/500',
   components: '/components',
+  pageContextTranslation: '/context-translation'
 };
 
 export const PATH_DASHBOARD = {

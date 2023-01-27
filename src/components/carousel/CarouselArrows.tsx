@@ -19,7 +19,7 @@ const StyledIconButton = styled(IconButton, {
 })<StyledIconButtonProps>(({ filled, shape, hasChildren, theme }) => ({
   color: 'inherit',
   transition: theme.transitions.create('all', {
-    duration: theme.transitions.duration.shorter,
+    //duration: theme.transitions.duration.shorter,
   }),
   ...(shape === 'rounded' && {
     borderRadius: Number(theme.shape.borderRadius) * 1.5,

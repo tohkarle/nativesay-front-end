@@ -33,14 +33,12 @@ const GREY = {
   900: '#161C24',
 };
 
-// TODO: https://www.eggradients.com/category/green-blue-gradient
-// global warming, cheap cocktail, fat cat
 const PRIMARY = {
-  lighter: '#EBD6FD',
-  light: '#6495ED',
-  main: '#3D5AFE',
-  dark: '#431A9E',
-  darker: '#4B0082',
+  lighter: '#D1E9FC',
+  light: '#76B0F1',
+  main: '#3d5afe',
+  dark: '#103996',
+  darker: '#061B64',
   contrastText: '#fff',
 };
 

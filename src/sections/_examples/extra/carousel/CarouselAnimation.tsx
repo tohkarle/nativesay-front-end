@@ -32,7 +32,7 @@ export default function CarouselAnimation({ data }: Props) {
     speed: 800,
     dots: false,
     arrows: false,
-    autoplay: true,
+    autoplay: false,
     slidesToShow: 1,
     slidesToScroll: 1,
     rtl: Boolean(theme.direction === 'rtl'),
