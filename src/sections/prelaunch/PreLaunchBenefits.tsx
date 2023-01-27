@@ -20,11 +20,11 @@ const StyledRoot = styled('div')(({ theme }) => ({
 
 // ----------------------------------------------------------------------
 
-interface Props {
+type Props = {
   handleClick: () => void;
-}
+};
 
-export default function PreLaunchBenefits({handleClick}: Props) {
+export default function PreLaunchBenefits({ handleClick }: Props) {
   const isDesktop = useResponsive('up', 'md');
 
   return (
@@ -38,7 +38,7 @@ export default function PreLaunchBenefits({handleClick}: Props) {
           }}
         >
           <Typography variant="h2">
-            How can NativeSay <br /> 
+            How can NativeSay <br />
             benefit you?
           </Typography>
         </Stack>
@@ -49,7 +49,6 @@ export default function PreLaunchBenefits({handleClick}: Props) {
           spacing={{ xs: 5, md: 0 }}
           paddingBottom={{ xs: 12, md: 15 }}
         >
-
           <Grid item xs={12} md={7}>
             <Benefit1 />
           </Grid>
@@ -72,7 +71,6 @@ export default function PreLaunchBenefits({handleClick}: Props) {
           direction={{ xs: 'column', md: 'row-reverse' }}
           paddingBottom={{ xs: 12, md: 15 }}
         >
-
           <Grid item xs={12} md={7}>
             <Benefit2 />
           </Grid>
@@ -93,7 +91,6 @@ export default function PreLaunchBenefits({handleClick}: Props) {
           justifyContent="space-between"
           spacing={{ xs: 5, md: 0 }}
         >
-
           <Grid item xs={12} md={7}>
             <Benefit3 />
           </Grid>
@@ -115,7 +112,7 @@ export default function PreLaunchBenefits({handleClick}: Props) {
 
 // ----------------------------------------------------------------------
 
-function Description1({handleClick}: Props) {
+function Description1({ handleClick }: Props) {
   const isDesktop = useResponsive('up', 'md');
 
   return (
@@ -127,13 +124,8 @@ function Description1({handleClick}: Props) {
         },
       }}
     >
-
       <m.div variants={varFade().inDown}>
-        <Typography
-          variant="h2"
-        >
-          Accurate & Relevant Translations
-        </Typography>
+        <Typography variant="h2">Accurate & Relevant Translations</Typography>
       </m.div>
 
       <m.div variants={varFade().inDown}>
@@ -146,16 +138,22 @@ function Description1({handleClick}: Props) {
             mb: { md: 5 },
           }}
         >
-          NativeSay gives you the power to input context or choose from pre-defined options, ensuring your translations are accurate and tailored to your specific needs.
+          NativeSay gives you the power to input context or choose from pre-defined options,
+          ensuring your translations are accurate and tailored to your specific needs.
         </Typography>
       </m.div>
 
-      {isDesktop && <m.div variants={varFade().inDown}> <JoinBetaTestButton handleClick={handleClick} /> </m.div>}
+      {isDesktop && (
+        <m.div variants={varFade().inDown}>
+          {' '}
+          <JoinBetaTestButton handleClick={handleClick} />{' '}
+        </m.div>
+      )}
     </Stack>
   );
 }
 
-function Description2({handleClick}: Props) {
+function Description2({ handleClick }: Props) {
   const isDesktop = useResponsive('up', 'md');
 
   return (
@@ -167,13 +165,8 @@ function Description2({handleClick}: Props) {
         },
       }}
     >
-
       <m.div variants={varFade().inDown}>
-        <Typography
-          variant="h2"
-        >
-          Cultural & Contextual Awareness
-        </Typography>
+        <Typography variant="h2">Cultural & Contextual Awareness</Typography>
       </m.div>
 
       <m.div variants={varFade().inDown}>
@@ -186,16 +179,22 @@ function Description2({handleClick}: Props) {
             mb: { md: 5 },
           }}
         >
-          Gain a deeper understanding of the context and cultural nuances of your translations with NativeSay&apos;s multiple translations and context explanations.
+          Gain a deeper understanding of the context and cultural nuances of your translations with
+          NativeSay&apos;s multiple translations and context explanations.
         </Typography>
       </m.div>
 
-      {isDesktop && <m.div variants={varFade().inDown}> <JoinBetaTestButton handleClick={handleClick} /> </m.div>}
+      {isDesktop && (
+        <m.div variants={varFade().inDown}>
+          {' '}
+          <JoinBetaTestButton handleClick={handleClick} />{' '}
+        </m.div>
+      )}
     </Stack>
   );
 }
 
-function Description3({handleClick}: Props) {
+function Description3({ handleClick }: Props) {
   const isDesktop = useResponsive('up', 'md');
 
   return (
@@ -207,13 +206,8 @@ function Description3({handleClick}: Props) {
         },
       }}
     >
-
       <m.div variants={varFade().inDown}>
-        <Typography
-          variant="h2"
-        >
-          Accelerate Your Language Learning
-        </Typography>
+        <Typography variant="h2">Accelerate Your Language Learning</Typography>
       </m.div>
 
       <m.div variants={varFade().inDown}>
@@ -226,11 +220,18 @@ function Description3({handleClick}: Props) {
             mb: { md: 5 },
           }}
         >
-          Easily look up unfamiliar words and phrases with NativeSay&apos;s built-in dictionary feature. This tool is a game-changer for language learners looking to speed up their learning process.
+          Easily look up unfamiliar words and phrases with NativeSay&apos;s built-in dictionary
+          feature. This tool is a game-changer for language learners looking to speed up their
+          learning process.
         </Typography>
       </m.div>
 
-      {isDesktop && <m.div variants={varFade().inDown}> <JoinBetaTestButton handleClick={handleClick} /> </m.div>}
+      {isDesktop && (
+        <m.div variants={varFade().inDown}>
+          {' '}
+          <JoinBetaTestButton handleClick={handleClick} />{' '}
+        </m.div>
+      )}
     </Stack>
   );
 }
@@ -239,7 +240,6 @@ function Description3({handleClick}: Props) {
 
 function Benefit1() {
   return (
-    
     <Box component={m.div} variants={varFade().inUp}>
       <Image disabledEffect alt="rocket" src="/assets/images/home/benefit_1.png" />
     </Box>
@@ -253,8 +253,8 @@ function Benefit2() {
       variants={varFade().inUp}
       sx={{
         ml: {
-          md: -6
-        }
+          md: -6,
+        },
       }}
     >
       <Image disabledEffect alt="rocket" src="/assets/images/home/benefit_2.png" />
@@ -272,7 +272,7 @@ function Benefit3() {
 
 // ----------------------------------------------------------------------
 
-function JoinBetaTestButton({handleClick}: Props) {
+function JoinBetaTestButton({ handleClick }: Props) {
   return (
     <Button
       onClick={handleClick}

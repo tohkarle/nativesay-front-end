@@ -1,9 +1,8 @@
 import fetch from 'isomorphic-unfetch';
 
-export default async (req: any, res: any) => {
+// TODO: move to service layer
+const subscribeUser = async (req: any, res: any) => {
   const { email, firstName, lastName } = req.body;
-
-  console.log({ email });
 
   if (!email) {
     return res.status(400).json({ error: 'Email is required' });
@@ -19,7 +18,7 @@ export default async (req: any, res: any) => {
       merge_fields: {
         FNAME: firstName,
         LNAME: lastName,
-      }
+      },
     };
 
     const response = await fetch(
@@ -46,3 +45,5 @@ export default async (req: any, res: any) => {
     return res.status(500).json({ error: error.message || error.toString() });
   }
 };
+
+export default subscribeUser;

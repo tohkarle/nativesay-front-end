@@ -1,3 +1,4 @@
+import SocialButtons from 'src/sections/prelaunch/SocialButtons';
 // next
 import NextLink from 'next/link';
 import { useRouter } from 'next/router';
@@ -56,7 +57,8 @@ export default function Footer() {
       }}
     >
       <Container>
-        <Logo sx={{ mb: 1, mx: 'auto' }} />
+        <SocialButtons />
+        <Logo sx={{ my: 1, mx: 'auto' }} />
 
         <Typography variant="caption" component="div">
           © All rights reserved
@@ -95,7 +97,10 @@ export default function Footer() {
 
           <Grid item xs={8} md={3}>
             <Typography variant="body2" sx={{ pr: { md: 5 } }}>
-              NativeSay is a translation app that helps users understand the context in which translations should be used, and provides culturally and contextually aware translations to facilitate effective learning and communication in different languages and cultural contexts.
+              NativeSay is a translation app that helps users understand the context in which
+              translations should be used, and provides culturally and contextually aware
+              translations to facilitate effective learning and communication in different languages
+              and cultural contexts.
             </Typography>
 
             <Stack

@@ -6,11 +6,12 @@ import Head from 'next/head';
 import { useTheme } from '@mui/material/styles';
 import { Box, Stack } from '@mui/material';
 // layouts
+import useScrollTo from 'src/hooks/useScrollTo';
 import MainLayout from '../layouts/main';
 // sections
-import PreLaunchCallToAction from './prelaunch/PreLaunchCallToAction';
-import PreLaunchHero from './prelaunch/PreLaunchHero';
-import PreLaunchBenefits from './prelaunch/PreLaunchBenefits';
+import PreLaunchCallToAction from '../sections/prelaunch/PreLaunchCallToAction';
+import PreLaunchHero from '../sections/prelaunch/PreLaunchHero';
+import PreLaunchBenefits from '../sections/prelaunch/PreLaunchBenefits';
 
 // ----------------------------------------------------------------------
 
@@ -21,9 +22,12 @@ PreLaunchPage.getLayout = (page: React.ReactElement) => <MainLayout> {page} </Ma
 export default function PreLaunchPage() {
   const theme = useTheme();
   const { scrollYProgress } = useScroll();
+
   const scrollToBottomRef = useRef<HTMLInputElement>(null);
-  const seeAllFeaturesRef = useRef<HTMLInputElement>(null);
-  // const { days, hours, minutes, seconds } = useCountdown(new Date('01/22/2023 21:30'));
+  const seeBenefitsRef = useRef<HTMLInputElement>(null);
+
+  const scrollToBottom = useScrollTo(scrollToBottomRef);
+  const scrollToBenefits = useScrollTo(seeBenefitsRef);
 
   const scaleX = useSpring(scrollYProgress, {
     stiffness: 100,
@@ -48,24 +52,22 @@ export default function PreLaunchPage() {
   );
 
   const handleClick = () => {
-    if (scrollToBottomRef.current)
-      scrollToBottomRef.current.scrollIntoView({ behavior: 'smooth' });
+    scrollToBottom();
   };
 
-  const seeAllFeatures = () => {
-    if (seeAllFeaturesRef.current)
-      seeAllFeaturesRef.current.scrollIntoView({ behavior: 'smooth' });
-  }
+  const handleClickSeeBenefits = () => {
+    scrollToBenefits();
+  };
 
   return (
     <>
       <Head>
-        <title> NativeSay | How a native would say it</title>
+        <title> NativeSay | Speak like a local, anywhere you go</title>
       </Head>
 
       {progress}
 
-      <PreLaunchHero handleClick={handleClick} seeAllFeatures={seeAllFeatures} />
+      <PreLaunchHero handleClick={handleClick} handleClickSeeBenefits={handleClickSeeBenefits} />
 
       <Box
         sx={{
@@ -74,15 +76,13 @@ export default function PreLaunchPage() {
           bgcolor: 'background.default',
         }}
       >
-      
-      <Stack ref={seeAllFeaturesRef} >
-        <PreLaunchBenefits handleClick={handleClick} />
-      </Stack>
+        <Stack ref={seeBenefitsRef}>
+          <PreLaunchBenefits handleClick={handleClick} />
+        </Stack>
 
-      <Stack ref={scrollToBottomRef} >
-        <PreLaunchCallToAction handleClick={handleClick} />
-      </Stack>
-
+        <Stack ref={scrollToBottomRef}>
+          <PreLaunchCallToAction />
+        </Stack>
       </Box>
     </>
   );

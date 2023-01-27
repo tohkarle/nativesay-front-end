@@ -51,6 +51,10 @@ export default function Header() {
         <Container sx={{ height: 1, display: 'flex', alignItems: 'center' }}>
           <Logo />
 
+          <Label sx={{ ml: 1 }} color="info">
+            BETA
+          </Label>
+
           {/* <Link
             href={PATH_DOCS.changelog}
             target="_blank"

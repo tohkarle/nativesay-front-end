@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 import Iconify from 'src/components/iconify/Iconify';
 // @mui
 import { styled, alpha, useTheme } from '@mui/material/styles';
-import { Button, Box, Link, Container, Typography, Stack, Grid } from '@mui/material';
+import { Button, Box, Container, Typography, Stack, Grid } from '@mui/material';
 // hooks
 import useResponsive from '../../hooks/useResponsive';
 // utils
@@ -14,10 +14,16 @@ import { HEADER } from '../../config-global';
 import { secondaryFont } from '../../theme/typography';
 // components
 import { MotionContainer, varFade } from '../../components/animate';
+import SocialButtons from './SocialButtons';
 
 // ----------------------------------------------------------------------
 
-const StyledRoot = styled('div')(({ theme }) => ({
+type StyleRootProps = {
+  hide?: boolean;
+};
+
+const StyledRoot = styled('div')<StyleRootProps>(({ theme, hide }) => ({
+  visibility: hide ? 'hidden' : 'visible',
   position: 'relative',
   ...bgGradient({
     color: alpha(theme.palette.background.default, theme.palette.mode === 'light' ? 0.9 : 0.94),
@@ -61,38 +67,14 @@ const StyledGradientText = styled(m.h1)(({ theme }) => ({
   },
 }));
 
-const StyledEllipseTop = styled('div')(({ theme }) => ({
-  position: 'absolute',
-  maxWidth: 480,
-  height: 480,
-  top: -80,
-  right: -80,
-  borderRadius: '50%',
-  filter: 'blur(100px)',
-  WebkitFilter: 'blur(100px)',
-  backgroundColor: alpha(theme.palette.primary.darker, 0.12),
-}));
-
-const StyledEllipseBottom = styled('div')(({ theme }) => ({
-  position: 'absolute',
-  height: 400,
-  bottom: -200,
-  left: '10%',
-  right: '10%',
-  borderRadius: '50%',
-  filter: 'blur(100px)',
-  WebkitFilter: 'blur(100px)',
-  backgroundColor: alpha(theme.palette.primary.darker, 0.08),
-}));
-
 // ----------------------------------------------------------------------
 
-interface Props {
+type Props = {
   handleClick: () => void;
-  seeAllFeatures: () => void
-}
+  handleClickSeeBenefits: () => void;
+};
 
-export default function PreLaunchHero({handleClick, seeAllFeatures}: Props) {
+export default function PreLaunchHero({ handleClick, handleClickSeeBenefits }: Props) {
   const isDesktop = useResponsive('up', 'md');
 
   const { scrollYProgress } = useScroll();
@@ -111,17 +93,16 @@ export default function PreLaunchHero({handleClick, seeAllFeatures}: Props) {
     [scrollYProgress]
   );
 
-  if (hide) {
-    return null;
-  }
-
   return (
     <>
-      <StyledRoot>
+      <StyledRoot hide={hide}>
         <Container component={MotionContainer} sx={{ height: 1 }}>
           <Grid container spacing={10} sx={{ height: 1 }}>
             <Grid item xs={12} md={6} sx={{ height: 1 }}>
-              <Description handleClick={handleClick} seeAllFeatures={seeAllFeatures} />
+              <Description
+                handleClick={handleClick}
+                handleClickSeeBenefits={handleClickSeeBenefits}
+              />
             </Grid>
 
             {isDesktop && (
@@ -131,10 +112,6 @@ export default function PreLaunchHero({handleClick, seeAllFeatures}: Props) {
             )}
           </Grid>
         </Container>
-
-        <StyledEllipseTop />
-
-        <StyledEllipseBottom />
       </StyledRoot>
 
       <Box sx={{ height: { md: '100vh' } }} />
@@ -144,13 +121,13 @@ export default function PreLaunchHero({handleClick, seeAllFeatures}: Props) {
 
 // ----------------------------------------------------------------------
 
-function Description({handleClick, seeAllFeatures}: Props) {
+function Description({ handleClick, handleClickSeeBenefits }: Props) {
   return (
     <StyledDescription>
       <m.div variants={varFade().in}>
         <Typography variant="h2" sx={{ textAlign: 'center' }}>
-        Unlock the Power of <br />
-        Contextual Translation
+          Unlock the Power of <br />
+          Contextual Translation
         </Typography>
       </m.div>
 
@@ -170,7 +147,9 @@ function Description({handleClick, seeAllFeatures}: Props) {
 
       <m.div variants={varFade().in}>
         <Typography variant="body2" sx={{ textAlign: 'center' }}>
-        Introducing NativeSay - the revolutionary translation app that takes into account the context and cultural nuances of your translations. Say goodbye to awkward or misinformed translations and hello to accurate, contextually aware communication.
+          Introducing NativeSay - the revolutionary translation app that takes into account the
+          context and cultural nuances of your translations. Say goodbye to awkward or misinformed
+          translations and hello to accurate, contextually aware communication.
         </Typography>
       </m.div>
 
@@ -185,11 +164,10 @@ function Description({handleClick, seeAllFeatures}: Props) {
             >
               Join Beta Test
             </Button>
-
           </Stack>
 
           <Button
-            onClick={seeAllFeatures}
+            onClick={handleClickSeeBenefits}
             color="inherit"
             size="large"
             variant="outlined"
@@ -199,6 +177,7 @@ function Description({handleClick, seeAllFeatures}: Props) {
             See Benefits
           </Button>
         </Stack>
+        <SocialButtons />
       </m.div>
     </StyledDescription>
   );
@@ -232,7 +211,7 @@ function Content() {
       <Stack
         component={m.div}
         variants={varFade().in}
-        sx={{ width: 1440, position: 'relative', ml: 0 }}
+        sx={{ width: 801, position: 'relative', ml: 0 }}
       >
         <Box
           component={m.img}

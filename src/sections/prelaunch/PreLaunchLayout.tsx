@@ -1,6 +1,5 @@
 // next
 import dynamic from 'next/dynamic';
-import { useRouter } from 'next/router';
 // @mui
 import { Box } from '@mui/material';
 // hooks
@@ -16,8 +15,8 @@ type Props = {
   children?: React.ReactNode;
 };
 
+// TODO: class vs sx?
 export default function MainLayout({ children }: Props) {
-  const { pathname } = useRouter();
   const isOffset = useOffSetTop(HEADER.H_MAIN_DESKTOP);
 
   return (

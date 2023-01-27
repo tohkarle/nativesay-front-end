@@ -1,16 +1,19 @@
 import { m } from 'framer-motion';
 import { useRef, useState } from 'react';
 import * as Yup from 'yup';
-import { useRouter } from 'next/router';
 // form
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 // @mui
-import { Box, Stack, IconButton, InputAdornment, Alert, Typography } from '@mui/material';
+import {
+  Stack,
+  Alert,
+  // makeStyles,
+} from '@mui/material';
 import { LoadingButton } from '@mui/lab';
 import FormProvider, { RHFTextField } from '../../components/hook-form';
 import PreLaunchThankYou from './PreLaunchThankYou';
-import { MotionViewport, varFade } from '../../components/animate';
+import { varFade } from '../../components/animate';
 
 // ----------------------------------------------------------------------
 
@@ -21,9 +24,24 @@ type FormValuesProps = {
   afterSubmit?: string;
 };
 
+const defaultValues = {
+  firstName: '',
+  lastName: '',
+  email: '',
+};
+
+const inputRootStyles = {
+  '.MuiFormLabel-root': {
+    color: 'white',
+    '&.Mui-focused': {
+      color: 'white',
+    },
+  },
+  input: { color: 'white' },
+};
+
 export default function PreLaunchEmailForm() {
-  const { replace } = useRouter();
-  const [signUpSuccessful, setSignUpSuccessful] = useState(false);
+  const [isDialogOpen, setIsDialogOpen] = useState<boolean>(false);
   const firstNameRef = useRef<HTMLInputElement>(null);
   const lastNameRef = useRef<HTMLInputElement>(null);
   const emailRef = useRef<HTMLInputElement>(null);
@@ -34,12 +52,6 @@ export default function PreLaunchEmailForm() {
     email: Yup.string().required('Email is required').email('Email must be a valid email address'),
   });
 
-  const defaultValues = {
-    firstName: '',
-    lastName: '',
-    email: '',
-  };
-
   const methods = useForm<FormValuesProps>({
     resolver: yupResolver(RegisterSchema),
     defaultValues,
@@ -49,39 +61,39 @@ export default function PreLaunchEmailForm() {
     reset,
     setError,
     handleSubmit,
-    formState: { errors, isSubmitting, isSubmitSuccessful },
+    formState: { errors, isSubmitting },
   } = methods;
 
   const onSubmit = async (e: any) => {
     try {
-        if (emailRef.current && firstNameRef.current && lastNameRef.current) {        
-            const res = await fetch('/api/subscribeUser', {
-            body: JSON.stringify({
-                email: emailRef.current.value,
-                firstName: firstNameRef.current.value,
-                lastName: lastNameRef.current.value,
-            }),
-    
-            headers: {
-                'Content-Type': 'application/json',
-            },
-    
-            method: 'POST',
-            });
-            setSignUpSuccessful(true);
-        }
-      } catch (error) {
-        console.error(error);
-        reset();
-        setError('afterSubmit', {
-          ...error,
-          message: error.message,
+      if (emailRef.current && firstNameRef.current && lastNameRef.current) {
+        // TODO: use useRequest
+        await fetch('/api/subscribeUser', {
+          body: JSON.stringify({
+            email: emailRef.current.value,
+            firstName: firstNameRef.current.value,
+            lastName: lastNameRef.current.value,
+          }),
+
+          headers: {
+            'Content-Type': 'application/json',
+          },
+
+          method: 'POST',
         });
+        setIsDialogOpen(true);
       }
+    } catch (error) {
+      console.error(error);
+      reset();
+      setError('afterSubmit', {
+        ...error,
+        message: error.message,
+      });
+    }
   };
 
   return (
-
     <FormProvider methods={methods} onSubmit={handleSubmit(onSubmit)}>
       <Stack
         spacing={2.5}
@@ -104,11 +116,12 @@ export default function PreLaunchEmailForm() {
           sx={{
             color: 'common.white',
             typography: 'body1',
-            maxWidth: { xs:300, md: 450 }
           }}
         >
-          Don&apos;t miss your chance to be among the first to experience NativeSay and provide valuable feedback before it&apos;s officially launched.
-          <br /><br />
+          Don&apos;t miss your chance to be among the first to experience NativeSay and provide
+          valuable feedback before it&apos;s officially launched.
+          <br />
+          <br />
           Sign up for NativeSay beta test now!
         </Stack>
 
@@ -122,26 +135,25 @@ export default function PreLaunchEmailForm() {
             inputRef={firstNameRef}
             name="firstName"
             label="First name"
-            inputProps={{ style: { color: 'white' } }}
+            sx={{ ...inputRootStyles }}
+            variant="filled"
           />
           <RHFTextField
             inputRef={lastNameRef}
             name="lastName"
             label="Last name"
-            inputProps={{ style: { outlineColor:'blue', color: 'white' } }}
+            sx={{ ...inputRootStyles }}
+            variant="filled"
           />
         </Stack>
 
-        <Stack
-          spacing={3}
-          component={m.div}
-          variants={varFade().inDown}
-        >
+        <Stack spacing={3} component={m.div} variants={varFade().inDown}>
           <RHFTextField
             inputRef={emailRef}
             name="email"
             label="Email address"
-            inputProps={{ style: { color: 'white' } }}
+            sx={{ ...inputRootStyles }}
+            variant="filled"
           />
 
           <LoadingButton
@@ -150,7 +162,7 @@ export default function PreLaunchEmailForm() {
             size="large"
             type="submit"
             variant="contained"
-            loading={isSubmitting || isSubmitSuccessful}
+            loading={isSubmitting}
             sx={{
               color: 'grey.800',
               bgcolor: 'common.white',
@@ -161,10 +173,7 @@ export default function PreLaunchEmailForm() {
         </Stack>
       </Stack>
 
-      {signUpSuccessful &&
-        <PreLaunchThankYou open={signUpSuccessful} />
-      }
-
+      {isDialogOpen && <PreLaunchThankYou open={isDialogOpen} setOpen={setIsDialogOpen} />}
     </FormProvider>
   );
 }
