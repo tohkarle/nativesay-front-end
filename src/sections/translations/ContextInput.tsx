@@ -6,14 +6,14 @@ const inputRootStyles = {
     // - The Input-root, inside the TextField-root
     "& fieldset": {
       // - The <fieldset> inside the Input-root
-      borderColor: "white", // - Set the Input border
+      borderColor: "transparent", // - Set the Input border
     },
     "&:hover fieldset": {
-      borderColor: "white", // - Set the Input border when parent has :hover
+      borderColor: "transparent", // - Set the Input border when parent has :hover
     },
     "&.Mui-focused fieldset": {
       // - Set the Input border when parent is focused
-      borderColor: "white",
+      borderColor: "transparent",
     },
   },
 };

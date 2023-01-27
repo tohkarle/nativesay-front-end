@@ -292,10 +292,11 @@ function InputBoxFooter({
       <LoadingButton
         type="submit"
         variant="contained"
-        size="large"
+        size="medium"
         onClick={onClickTranslate}
         disabled={text.length === 0}
         loading={loading}
+        sx={{ px: { md: 3 }, py: { md: 1.5 } }}
       >
         Translate
       </LoadingButton>
