@@ -1,5 +1,5 @@
 import fetch from "isomorphic-unfetch";
-import md5 from "md5";
+import * as md5 from "md5";
 
 // TODO: move to service layer
 const subscribeUser = async (req: any, res: any) => {
@@ -13,10 +13,18 @@ const subscribeUser = async (req: any, res: any) => {
     const AUDIENCE_ID = process.env.MAILCHIMP_AUDIENCE_ID;
     const API_KEY = process.env.MAILCHIMP_API_KEY;
     const DATACENTER = process.env.MAILCHIMP_API_SERVER;
+    const data = {
+      email_address: email,
+      status: "subscribed",
+      merge_fields: {
+        FNAME: firstName,
+        LNAME: lastName,
+      },
+    };
 
     // check if user already exists
     const existingResponse = await fetch(
-      `https://${DATACENTER}.api.mailchimp.com/3.0/lists/${AUDIENCE_ID}/members/${md5(
+      `https://${DATACENTER}.api.mailchimp.com/3.0/lists/${AUDIENCE_ID}/members/${md5.default(
         email
       )}`,
       {
@@ -34,16 +42,6 @@ const subscribeUser = async (req: any, res: any) => {
       });
     }
 
-    // if user doesn't exist, create new subscriber
-    const data = {
-      email_address: email,
-      status: "subscribed",
-      merge_fields: {
-        FNAME: firstName,
-        LNAME: lastName,
-      },
-    };
-
     const response = await fetch(
       `https://${DATACENTER}.api.mailchimp.com/3.0/lists/${AUDIENCE_ID}/members`,
 
@@ -57,6 +55,7 @@ const subscribeUser = async (req: any, res: any) => {
       }
     );
 
+    // if user doesn't exist, create new subscriber
     if (response.status >= 400) {
       return res.status(400).json({
         error: `There was an error subscribing to the newsletter.`,
