@@ -25,6 +25,7 @@ import Label from "../../components/label";
 import NavMobile from "./nav/mobile";
 import navConfig from "./nav/config-navigation";
 import NavDesktop from "./nav/desktop";
+import Iconify from "src/components/iconify/Iconify";
 
 // ----------------------------------------------------------------------
 
@@ -80,7 +81,11 @@ export default function Header() {
             variant="subtitle2"
             color="inherit"
           >
-            support@nativesay.com
+            {isDesktop ? (
+              "support@nativesay.com"
+            ) : (
+              <Iconify icon="ic:outline-email" width={24} />
+            )}
           </Link>
 
           {/* {isDesktop && <NavDesktop isOffset={isOffset} data={navConfig} />}
