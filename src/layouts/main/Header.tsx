@@ -84,7 +84,7 @@ export default function Header() {
             {isDesktop ? (
               "support@nativesay.com"
             ) : (
-              <Iconify icon="ic:outline-email" width={24} />
+              <Iconify marginBottom={-1} icon="ic:outline-email" width={24} />
             )}
           </Link>
 
