@@ -1,35 +1,35 @@
-import { m, useScroll, useSpring } from 'framer-motion';
+import { m, useScroll, useSpring } from "framer-motion";
+import React, { useRef } from "react";
 // next
-import Head from 'next/head';
+import Head from "next/head";
 // @mui
-import { useTheme } from '@mui/material/styles';
-import { Box } from '@mui/material';
+import { useTheme } from "@mui/material/styles";
+import { Box, Stack } from "@mui/material";
 // layouts
-import MainLayout from '../layouts/main';
+import useScrollTo from "src/hooks/useScrollTo";
+import MainLayout from "../layouts/main";
 // sections
-import {
-  HomeHero,
-  HomeMinimal,
-  HomeDarkMode,
-  HomeLookingFor,
-  HomeForDesigner,
-  HomeColorPresets,
-  HomePricingPlans,
-  HomeAdvertisement,
-  HomeCleanInterfaces,
-  HomeHugePackElements,
-} from '../sections/home';
+import PreLaunchCallToAction from "../sections/prelaunch/PreLaunchCallToAction";
+import PreLaunchHero from "../sections/prelaunch/PreLaunchHero";
+import PreLaunchBenefits from "../sections/prelaunch/PreLaunchBenefits";
 
 // ----------------------------------------------------------------------
 
-HomePage.getLayout = (page: React.ReactElement) => <MainLayout> {page} </MainLayout>;
+PreLaunchPage.getLayout = (page: React.ReactElement) => (
+  <MainLayout> {page} </MainLayout>
+);
 
 // ----------------------------------------------------------------------
 
-export default function HomePage() {
+export default function PreLaunchPage() {
   const theme = useTheme();
-
   const { scrollYProgress } = useScroll();
+
+  const scrollToBottomRef = useRef<HTMLInputElement>(null);
+  const seeBenefitsRef = useRef<HTMLInputElement>(null);
+
+  const scrollToBottom = useScrollTo(scrollToBottomRef);
+  const scrollToBenefits = useScrollTo(seeBenefitsRef);
 
   const scaleX = useSpring(scrollYProgress, {
     stiffness: 100,
@@ -45,48 +45,49 @@ export default function HomePage() {
         right: 0,
         height: 3,
         zIndex: 1999,
-        position: 'fixed',
-        transformOrigin: '0%',
+        position: "fixed",
+        transformOrigin: "0%",
         backgroundColor: theme.palette.primary.main,
         scaleX,
       }}
     />
   );
 
+  const handleClick = () => {
+    scrollToBottom();
+  };
+
+  const handleClickSeeBenefits = () => {
+    scrollToBenefits();
+  };
+
   return (
     <>
       <Head>
-        <title> The starting point for your next project | Minimal UI</title>
+        <title> NativeSay | Speak like a local, anywhere you go</title>
       </Head>
 
       {progress}
 
-      <HomeHero />
+      <PreLaunchHero
+        handleClick={handleClick}
+        handleClickSeeBenefits={handleClickSeeBenefits}
+      />
 
       <Box
         sx={{
-          overflow: 'hidden',
-          position: 'relative',
-          bgcolor: 'background.default',
+          overflow: "hidden",
+          position: "relative",
+          bgcolor: "background.default",
         }}
       >
-        <HomeMinimal />
+        <Stack ref={seeBenefitsRef}>
+          <PreLaunchBenefits handleClick={handleClick} />
+        </Stack>
 
-        <HomeHugePackElements />
-
-        <HomeForDesigner />
-
-        <HomeDarkMode />
-
-        <HomeColorPresets />
-
-        <HomeCleanInterfaces />
-
-        <HomePricingPlans />
-
-        <HomeLookingFor />
-
-        <HomeAdvertisement />
+        <Stack ref={scrollToBottomRef}>
+          <PreLaunchCallToAction />
+        </Stack>
       </Box>
     </>
   );
